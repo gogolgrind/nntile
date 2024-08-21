@@ -9,7 +9,7 @@
 # @file wrappers/python/tests/layer/test_batch_norm.py
 # Test for nntile.layer.BatchNorm2d
 #
-# @version 1.0.0
+# @version 1.1.0
 
 from dataclasses import dataclass, field
 
@@ -164,7 +164,8 @@ class TestBatchNorm2d:
         np.testing.assert_allclose(
             nntile.tensor.to_numpy(nntile_layer.weight.grad),
             bn_torch.weight.grad.numpy(),
-            atol=5e-5,
+            atol=1e-5,
+            rtol=1e-4,
             err_msg=f"Error in backward test d(bn)/d(w) for params: {params}",
         )
 

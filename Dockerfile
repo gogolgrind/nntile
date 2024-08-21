@@ -9,7 +9,7 @@
 # @file Dockerfile
 # Instructions for Docker to build an image for testing with NNTile and Torch
 #
-# @version 1.0.0
+# @version 1.1.0
 
 # Base images could be unavailable due to NVidia policies on keeping track only
 # of the latest ones
@@ -89,9 +89,12 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     curl -SL $GIST_PEDS/raw/4e7b80e5f9d49c2e39cf8aa4e6b6b8b951724730/peds.py | \
     python - -i -e test .
 
-# Install helpful developer tools
+# Install helpful developer tools, Jupyter Lab and TensorFlow-cpu for logger
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install pre-commit isort ruff mypy
+    pip install pre-commit isort ruff mypy jupyter tensorflow-cpu tensorboard
+
+# Open Jupyter Lab and Tensorboard ports
+EXPOSE 8888 6006
 
 FROM sandbox AS nntile
 

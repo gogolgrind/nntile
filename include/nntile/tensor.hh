@@ -9,7 +9,7 @@
  * @file include/nntile/tensor.hh
  * Header for Tensor<T> class with corresponding operations
  *
- * @version 1.0.0
+ * @version 1.1.0
  * */
 
 #pragma once
@@ -41,6 +41,7 @@
 #include <nntile/tensor/nrm2.hh>
 #include <nntile/tensor/normalize.hh>
 #include <nntile/tensor/prod.hh>
+#include <nntile/tensor/prod_inplace.hh>
 #include <nntile/tensor/randn.hh>
 #include <nntile/tensor/relu.hh>
 #include <nntile/tensor/relu_forward.hh>

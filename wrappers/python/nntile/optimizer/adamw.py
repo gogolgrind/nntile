@@ -9,7 +9,7 @@
 # @file wrappers/python/nntile/optimizer/adamw.py
 # Implementation of AdamW with amsgrad option within nntile package
 #
-# @version 1.0.0
+# @version 1.1.0
 
 import pickle
 
@@ -163,3 +163,10 @@ class AdamW:
             self.second_moments[i].from_array(s)
             del s
         del stored_states, first_moments, second_moments
+
+    def get_nbytes(self):
+        nbytes = 0
+        for i in range(len(self.first_moments)):
+            nbytes += self.first_moments[i].get_nbytes()
+            nbytes += self.second_moments[i].get_nbytes()
+        return nbytes
